@@ -190,10 +190,7 @@ def button(update, context):
         mode[str(update.effective_chat.id)] = ""
 
     elif query.data == "menu":
-        query.edit_message_text(text="Lists: " + str(len(file["lists_id"])) +
-                                     "\nName: " + file["name"] +
-                                     "\nID: " + str(update.effective_chat.id),
-                                     reply_markup=InlineKeyboardMarkup(keyboards["menu"]))
+        menu(update, context);
         mode[str(update.effective_chat.id)] = ""
 
     elif query.data == "create_list":
