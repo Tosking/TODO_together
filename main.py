@@ -6,6 +6,7 @@ from os import listdir
 import json
 import logging
 import telegram
+import mysql.connector
 
 updater = Updater(token=open("token.txt", "r").read(), use_context=True)
 disp = updater.dispatcher
