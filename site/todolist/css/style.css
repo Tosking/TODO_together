@@ -5,6 +5,12 @@ body {background-color: #EFF0F3!important}
   width: 25%!important;
 }
 
+.list {
+  color: dark;
+  font-size: 10px;
+  white-space: pre-line;
+}
+
 form {
   background: #2FCC9A;
   border: 2px solid #228e6c;
