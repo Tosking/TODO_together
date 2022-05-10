@@ -7,7 +7,7 @@
   }
 
   require 'configDB.php';
-  $sql = 'INSERT INTO items(list, content, is_completed) VALUES('.$list.' ,'.$task.' , 0)';
+  $sql = 'INSERT INTO items(list, content, is_completed) VALUES('.$list.' ,"'.$task.'" , 0)';
   $query = $pdo->prepare($sql);
   $query->execute();
 
