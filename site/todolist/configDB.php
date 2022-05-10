@@ -1,4 +1,4 @@
 <?php
-  $dsn = 'mysql:host=localhost;dbname=to-do';
-  $pdo = new PDO($dsn, 'root', '12345');
+  $dsn = 'mysql:host=localhost;dbname=todolist';
+  $pdo = new PDO($dsn, 'логин', 'пароль');
 
