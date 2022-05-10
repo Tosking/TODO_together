@@ -27,7 +27,7 @@
       echo '<ul>';
       $query = $pdo->query('SELECT * FROM `items` ORDER BY `list` DESC');
       while($row = $query->fetch(PDO::FETCH_OBJ)) {
-        echo '<li><b>'.$row->content.'</b><h3>'.$row->list.'</h3><a href="/delete.php?id='.$row->item.'&list='.$row->list.'"><button>Удалить</button></a></li>';
+        echo '<li><h3>List:'.$row->list.'</h3><b>'.$row->content.'</b><a href="/delete.php?id='.$row->item.'&list='.$row->list.'"><button>Удалить</button></a></li>';
       }
       echo '</ul>';
     ?>
