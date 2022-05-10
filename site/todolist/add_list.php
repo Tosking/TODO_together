@@ -5,7 +5,7 @@
     }
 
     require 'configDB.php';
-    $sql = 'INSERT INTO list(name) VALUES('.$list.')';
+    $sql = 'INSERT INTO list(name) VALUES("'.$list.'")';
     $query = $pdo->prepare($sql);
     $query->execute();
 
