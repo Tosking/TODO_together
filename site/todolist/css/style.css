@@ -11,7 +11,7 @@ body {background-color: #EFF0F3!important}
   white-space: pre-line;
 }
 
-form {
+.input {
   background: #2FCC9A;
   border: 2px solid #228e6c;
   border-radius: 10px;
@@ -38,6 +38,30 @@ ul li {
   border-radius: 5px;
 }
 
+#lists {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+#lists button {
+  background: #33aa33;
+  color: white;
+  border: 0;
+  padding: 5px 15px;
+  font-size: 13px;
+  border-radius: 5px;
+  z-index: 2;
+  white-space: pre-line;
+  margin-top: 2px;
+  display: block;
+}
+
+#lists button:hover {
+  background: #00ff00;
+}
+
 ul li:hover {
   background: #e5e5e5;
 }
@@ -47,9 +71,9 @@ ul li button {
   padding: 5px 15px;
   color: white;
   font-size: 13px;
-  background: #db5757;
+  float: right;
+  background: red;
   position: relative;
-  left: 130px;
   border-radius: 5px;
 }
 

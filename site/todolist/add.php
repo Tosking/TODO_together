@@ -1,6 +1,6 @@
 <?php
   $task = $_POST['task'];
-  $list = $_POST['list'];
+  $list = $_GET['list'];
   if($task == '') {
     echo 'Введите само задание';
     exit();
@@ -11,5 +11,5 @@
   $query = $pdo->prepare($sql);
   $query->execute();
 
-  header('Location: /');
+  header('Location: /index.php?list='.$list.'');
 
