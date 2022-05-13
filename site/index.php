@@ -17,7 +17,9 @@
       echo '<ul>';
       $list = $_GET['list'];
       $query = $pdo->query('SELECT * FROM `items` WHERE `list` ='.$list.'');
-      echo '<h1>Список дел</h1>
+      $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$list.'');
+      $name = $listrow->fetch(PDO::FETCH_OBJ);
+      echo '<h1>List:'.$name->name.'</h1>
     <form action="/add.php?list='.$list.'" method="post" class="input">
       <input type="text" name="task" id="task" placeholder="Нужно сделать.." class="form-control" autocomplete="off">
       <button type="submit" name="sendTask" class="btn btn-success">Отправить</button>
