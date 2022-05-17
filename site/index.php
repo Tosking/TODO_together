@@ -15,10 +15,6 @@
     <?php
       require 'configDB.php';
       echo '<ul>';
-      $list = $_GET['list'];
-      $query = $pdo->query('SELECT * FROM `items` WHERE `list` ='.$list.'');
-      $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$list.'');
-      $name = $listrow->fetch(PDO::FETCH_OBJ);
       $user = 1;
       echo '
     <h1>Создание листа</h1>
@@ -29,7 +25,7 @@
       $listrow = $pdo->query('SELECT * FROM `list`');
       echo '<div id="lists"><h1>Листы:</h1>';
       while($list = $listrow->fetch(PDO::FETCH_OBJ)){
-        echo ' <a href="/index.php?list='.$list->id.'"><button>'.$list->name.'</button></a>';
+        echo ' <a href="/list.php?list='.$list->id.'"><button>'.$list->name.'</button></a>';
       }
       echo '</div>';
       echo '</ul>';
