@@ -8,5 +8,5 @@
   $query = $pdo->prepare($sql);
   $query->execute();
 
-  header('Location: /');
+  header('Location: /index.php?list='.$list.'');
 ?>

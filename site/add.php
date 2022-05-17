@@ -11,5 +11,5 @@
   $query = $pdo->prepare($sql);
   $query->execute();
 
-  header('Location: /index.php?list='.$list.'');
+  header('Location: /list.php?'.$list.'');
 
