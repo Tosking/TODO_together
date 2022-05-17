@@ -40,17 +40,17 @@ ul li {
 
 #lists {
   position: absolute;
-  top: 10px;
+  top: 80px;
   left: 10px;
   z-index: 1;
 }
 
 #lists button {
   background: #33aa33;
-  color: white;
+  color: black;
   border: 0;
   padding: 5px 15px;
-  font-size: 13px;
+  font-size: 25px;
   border-radius: 5px;
   z-index: 2;
   white-space: pre-line;
@@ -92,4 +92,8 @@ ul li button:hover {
 }
 #delete:hover{
   background: #740a01;
+}
+#listes
+{
+  position: relative;
 }

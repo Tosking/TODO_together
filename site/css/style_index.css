@@ -15,8 +15,8 @@ body {background-color: #EFF0F3!important}
   background: #2FCC9A;
   border: 2px solid #228e6c;
   border-radius: 10px;
-  padding: 20px 10px;
-  margin-bottom: 20px;
+  padding: 18px 10px;
+  margin-bottom: 22px;
 }
 
 #task {
@@ -50,7 +50,7 @@ ul li {
   color: white;
   border: 0;
   padding: 10px 15px;
-  font-size: 13px;
+  font-size: 17px;
   border-radius: 5px;
   z-index: 2;
   white-space: pre-line;

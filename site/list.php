@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+    <header><a href ="/index.php"><img src ="logo/logo.png" width="200" height="70" alt ="logo"></a></header>
   <div class="container">
     <?php
       require 'configDB.php';
@@ -31,8 +32,9 @@
       $listrow = $pdo->query('SELECT * FROM `list`');
       echo '<h4> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h4></a>';
       echo '<div id="lists">';
+      echo '<h1><b>Lists</b></h1>';
       while($list = $listrow->fetch(PDO::FETCH_OBJ)) {
-          echo '<a href="/list.php?list='.$list->id.'"><button>'.$list->name.'</button></a>';
+          echo '<a href="/list.php?list='.$list->id.'"><button id ="listes">'.$list->name.'</button></a>';
       }
       echo '</div>';
       echo '</ul>';
