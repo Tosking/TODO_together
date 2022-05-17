@@ -80,3 +80,16 @@ ul li button {
 ul li button:hover {
   background: #a04141;
 }
+
+#delete
+{
+  margin: 0 auto;
+  display: block;
+  color:white;
+  background: red;
+  position: relative;
+  border-radius: 10px;
+}
+#delete:hover{
+  background: #740a01;
+}

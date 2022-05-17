@@ -29,7 +29,7 @@
         echo '<li><b>'.$row->content.'</b><a href="/delete.php?id='.$row->item.'&list='.$row->list.'"><button class="delete">Удалить</button></a></li>';
       }
       $listrow = $pdo->query('SELECT * FROM `list`');
-      echo '<h2> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h2></a>';
+      echo '<h4> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h4></a>';
       echo '<div id="lists">';
       while($list = $listrow->fetch(PDO::FETCH_OBJ)) {
           echo '<a href="/list.php?list='.$list->id.'"><button>'.$list->name.'</button></a>';
