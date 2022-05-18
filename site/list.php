@@ -19,7 +19,7 @@
       $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$list.'');
       $name = $listrow->fetch(PDO::FETCH_OBJ);
       $user = 1;
-      echo '<h1>Лист:'.$name->name.'</h1>
+      echo '<h1>'.$name->name.'</h1>
     <form action="/add.php?list='.$list.'" method="post" class="input">
       <input type="text" name="task" id="task" placeholder="Нужно сделать.." class="form-control" autocomplete="off">
       <button type="submit" name="sendTask" class="btn btn-success">Создать</button>
@@ -28,19 +28,19 @@
         $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$row->list.'');
         $list_id = $listrow->fetch(PDO::FETCH_OBJ);
         $sub_cont = $pdo->query('SELECT * FROM `sub_content` WHERE `item` ='.$row->item.'');
-
-        echo '<li><b>'.$row->content.'</b>';
+        echo '<li><a href="/delete.php?id='.$row->item.'&list='.$row->list.'"><button class="delete">Удалить</button></a>';
+        echo '<b>'.$row->content.'</b>';
 
         while($sub_content = $sub_cont->fetch(PDO::FETCH_OBJ)){
             echo '<div>'.$sub_content->content.'</div>';
         }
 
         echo'
-        <form action="/add_subcont.php?list='.$list.'&item='.$row->item.'" method="post" class="input">
+        <form action="/add_subcont.php?list='.$list.'&item='.$row->item.'" method="post" class="sub">
         <input type="text" name="task" id="task" placeholder="Нужно сделать.." class="form-control" autocomplete="off">
-        <button type="submit" name="sendTask" class="btn btn-success">Создать подзадачу</button>
+        <button type="submit" name="sendTask" class="btn btn-success" id="subbut">Создать подзадачу</button>
         </form>
-        <a href="/delete.php?id='.$row->item.'&list='.$row->list.'"><button class="delete">Удалить</button></a></li>';
+        </li>';
       }
       $listrow = $pdo->query('SELECT * FROM `list`');
       echo '<h4> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h4></a>';

@@ -19,10 +19,18 @@ body {background-color: #EFF0F3!important}
   margin-bottom: 20px;
 }
 
+.sub {
+  position:relative;
+}
+
 #task {
   width: 60%;
   float: left;
   margin-right: 5%;
+}
+
+#subbut {
+  font-size:12px;
 }
 
 ul {
@@ -32,6 +40,7 @@ ul {
 ul li {
   list-style: none;
   padding: 15px;
+  padding-bottom: 50px;
   margin-bottom: 10px;
   background: #fcfcfc;
   border: 1px solid silver;
@@ -43,6 +52,10 @@ ul li {
   top: 80px;
   left: 10px;
   z-index: 1;
+  border: 1px;
+  border-style: solid;
+  padding: 5px 5px;
+  border-radius: 10px;
 }
 
 #lists button {
@@ -50,12 +63,14 @@ ul li {
   color: black;
   border: 0;
   padding: 5px 15px;
-  font-size: 25px;
+  font-size: 15px;
   border-radius: 5px;
   z-index: 2;
   white-space: pre-line;
   margin-top: 2px;
   display: block;
+  width: 80%;
+  margin-left:10%;
 }
 
 #lists button:hover {
