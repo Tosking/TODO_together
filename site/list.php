@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Список дел</title>
+  <title>Todolist</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
@@ -19,10 +19,10 @@
       $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$list.'');
       $name = $listrow->fetch(PDO::FETCH_OBJ);
       $user = 1;
-      echo '<h1>List:'.$name->name.'</h1>
+      echo '<h1>Лист:'.$name->name.'</h1>
     <form action="/add.php?list='.$list.'" method="post" class="input">
       <input type="text" name="task" id="task" placeholder="Нужно сделать.." class="form-control" autocomplete="off">
-      <button type="submit" name="sendTask" class="btn btn-success">Отправить</button>
+      <button type="submit" name="sendTask" class="btn btn-success">Создать</button>
     </form>';
       while($row = $query->fetch(PDO::FETCH_OBJ)) {
         $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$row->list.'');
@@ -32,7 +32,7 @@
       $listrow = $pdo->query('SELECT * FROM `list`');
       echo '<h4> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h4></a>';
       echo '<div id="lists">';
-      echo '<h1><b>Lists</b></h1>';
+      echo '<h1><b>Листы</b></h1>';
       while($list = $listrow->fetch(PDO::FETCH_OBJ)) {
           echo '<a href="/list.php?list='.$list->id.'"><button id ="listes">'.$list->name.'</button></a>';
       }
