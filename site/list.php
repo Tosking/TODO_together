@@ -32,7 +32,7 @@
         echo '<b>'.$row->content.'</b>';
 
         while($sub_content = $sub_cont->fetch(PDO::FETCH_OBJ)){
-            echo '<div>'.$sub_content->content.'</div>';
+            echo '<div class="sub_content">• '.$sub_content->content.'</div>';
         }
 
         echo'

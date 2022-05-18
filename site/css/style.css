@@ -73,6 +73,10 @@ ul li {
   margin-left:10%;
 }
 
+.sub_content {
+  font-size: 12px
+}
+
 #lists button:hover {
   background: #00ff00;
 }
