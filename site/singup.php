@@ -16,7 +16,7 @@ echo '
 
             <h2>Регистрация</h2>
             <form action="/singup.php" method="post">
-                <input type="text" class="form-control" name="name" id="name" placeholder="Введите имя"><br>
+                <input type="text" class="form-control" name="name" id="name_" placeholder="Введите имя"><br>
                 <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин"><br>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Введите Email"><br>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль"><br>
@@ -25,7 +25,6 @@ echo '
             </form>
             <br>
             <p>Если вы зарегистрированы, тогда нажмите <a href="login.php">здесь</a>.</p>
-            <p>Вернуться на <a href="/index.php">главную</a>.</p>
         </div>
     </div>
 </div>
@@ -124,7 +123,7 @@ if(isset($data['do_signup'])) {
 
     } else {
         // array_shift() извлекает первое значение массива array и возвращает его, сокращая размер array на один элемент.
-        echo '<div style="color: red; ">' . array_shift($errors). '</div><hr>';
+        echo '<div style="color: red;">' . array_shift($errors). '</div><hr>';
     }
 }
 ?>

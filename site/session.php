@@ -6,8 +6,11 @@ $pass = $_POST['pass'];
 
 $logcheck = $pdo->query('SELECT * FROM `user` WHERE `login` ="' . $login . '"');
 $row = $logcheck->fetch(PDO::FETCH_OBJ);
-if (1 && ($row->password != $pass)) {
-    header('Location: /login.php');
+if ($logcheck->rowCount() == 0){
+   header('Location: /login.php?error=true');
+}
+else if (1 && ($row->password != $pass)) {
+    header('Location: /login.php?error=true');
 }
 else{
     session_start();

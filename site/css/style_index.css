@@ -82,19 +82,10 @@ ul li button:hover {
   background: #a04141;
 }
 
-#reg{
+#quit{
   position: absolute;
   top: 20px;
   right: 20px;
-  background: aqua;
-  border: 0;
-  border-radius: 5px;
-  display: block;
-}
-#login{
-  position: absolute;
-  top: 20px;
-  right: 130px;
   background: aqua;
   border: 0;
   border-radius: 5px;

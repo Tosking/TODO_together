@@ -57,8 +57,7 @@
       echo '</ul>';
       $user_name = $pdo->query('SELECT `login` FROM `user` WHERE `user_id`='.$user.'')->fetch(PDO::FETCH_OBJ)->login;
       echo '
-      <a href="/singup.php"> <button id="reg"> Регистрация </button></a>
-      <a href="/login.php"> <button id="login"> Вход </button></a>
+      <a href="/logout.php"> <button id="quit"> Выход </button></a>
       <div id="name">Вы вошли как: <strong>'.$user_name.'</strong></div>
       ';
     ?>
