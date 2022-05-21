@@ -9,13 +9,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+    <header><a href ="/index.php"><img src ="logo/logo.png" width="200" height="70" alt ="logo"></a></header>
   <div class="container">
 
 
     <?php
+      session_start();
       require 'configDB.php';
       echo '<ul>';
-      $user = 1;
+      $user = $_SESSION['id'];
       echo '
     <h1>Создание листа</h1>
     <form action="/add_list.php?user='.$user.'" method="post" class="input">
@@ -23,9 +25,11 @@
       <button type="submit" name="createList" class="btn btn-success">Создать</button>
     </form>';
 
-      $listrow = $pdo->query('SELECT * FROM `list`');
+      $userlists = $pdo->query('SELECT `list` FROM `list_to_user` WHERE `user` ='.$user.'');
       echo '<div id="lists"><h1>Листы:</h1>';
-      while($list = $listrow->fetch(PDO::FETCH_OBJ)){
+      while($listid = $userlists->fetch(PDO::FETCH_OBJ)){
+        $list = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$listid->list.'');
+        $list = $list->fetch(PDO::FETCH_OBJ);
         echo ' <a href="/list.php?list='.$list->id.'"><button>'.$list->name.'</button></a>';
       }
       echo '</div>';

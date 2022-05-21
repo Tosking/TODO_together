@@ -113,6 +113,10 @@ if(isset($data['do_signup'])) {
 
         $query = $pdo->prepare($sql);
         $query->execute();
+        session_start();
+        $_SESSION['id'] = $pdo->query('SELECT `user_id` FROM `user` WHERE `login` ="'.$login .'"')->fetch(PDO::FETCH_OBJ)->user_id;
+
+        header('Location: /index.php');
 
         // Хешируем пароль
         //$user->password = password_hash($data['password'], PASSWORD_DEFAULT);

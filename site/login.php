@@ -17,7 +17,7 @@ echo '
             <h2>Авторизация</h2>
             <form action="session.php" method="post">
                 <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин" required><br>
-                <input type="password" class="form-control" name="password" id="pass" placeholder="Введите пароль" required><br>
+                <input type="password" class="form-control" name="pass" id="pass" placeholder="Введите пароль" required><br>
                 <button class="btn btn-success" name="do_login" type="submit">Авторизоваться</button>
             </form>
             <br>

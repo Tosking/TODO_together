@@ -12,13 +12,14 @@
     <header><a href ="/index.php"><img src ="logo/logo.png" width="200" height="70" alt ="logo"></a></header>
   <div class="container">
     <?php
+      session_start();
       require 'configDB.php';
       echo '<ul>';
       $list = $_GET['list'];
       $query = $pdo->query('SELECT * FROM `items` WHERE `list` ='.$list.'');
       $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$list.'');
       $name = $listrow->fetch(PDO::FETCH_OBJ);
-      $user = 1;
+      $user = $_SESSION['id'];
       echo '<h1>'.$name->name.'</h1>
     <form action="/add.php?list='.$list.'" method="post" class="input">
       <input type="text" name="task" id="task" placeholder="Нужно сделать.." class="form-control" autocomplete="off">
@@ -42,11 +43,13 @@
         </form>
         </li>';
       }
-      $listrow = $pdo->query('SELECT * FROM `list`');
+      $listrow = $pdo->query('SELECT `list` FROM `list_to_user` WHERE `user` ='.$user.'');
       echo '<h4> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h4></a>';
       echo '<div id="lists">';
       echo '<h1><b>Листы</b></h1>';
-      while($list = $listrow->fetch(PDO::FETCH_OBJ)) {
+      while($listid = $listrow->fetch(PDO::FETCH_OBJ)) {
+          $list = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$listid->list.'');
+          $list = $list->fetch(PDO::FETCH_OBJ);
           echo '<a href="/list.php?list='.$list->id.'"><button id ="listes">'.$list->name.'</button></a>';
       }
       echo '</div>';
