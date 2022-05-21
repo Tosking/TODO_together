@@ -21,6 +21,13 @@ body {background-color: #EFF0F3!important}
 
 .sub {
   position:relative;
+  visibility: hidden;
+}
+
+ul li:hover .sub{
+  visibility: visible;
+  margin-top: 10px;
+  padding-bottom: 20px;
 }
 
 #task {
@@ -40,7 +47,7 @@ ul {
 ul li {
   list-style: none;
   padding: 15px;
-  padding-bottom: 50px;
+  padding-bottom: 27px;
   margin-bottom: 10px;
   background: #fcfcfc;
   border: 1px solid silver;

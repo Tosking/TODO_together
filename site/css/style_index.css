@@ -100,4 +100,14 @@ ul li button:hover {
   border-radius: 5px;
   display: block;
 }
+#name{
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  border: 1px;
+  padding: 3px 3px;
+  border-radius: 5px;
+  border-style: dashed;
+  display: block;
+}
 
