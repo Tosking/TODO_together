@@ -15,8 +15,8 @@ body {background-color: #EFF0F3!important}
   background: #2FCC9A;
   border: 2px solid #228e6c;
   border-radius: 10px;
-  padding: 18px 10px;
-  margin-bottom: 22px;
+  padding: 20px 10px;
+  margin-bottom: 20px;
 }
 
 #task {
@@ -50,7 +50,7 @@ ul li {
   color: white;
   border: 0;
   padding: 10px 15px;
-  font-size: 17px;
+  font-size: 13px;
   border-radius: 5px;
   z-index: 2;
   white-space: pre-line;
@@ -81,3 +81,23 @@ ul li button {
 ul li button:hover {
   background: #a04141;
 }
+
+#reg{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: aqua;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+}
+#login{
+  position: absolute;
+  top: 20px;
+  right: 130px;
+  background: aqua;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+}
+
