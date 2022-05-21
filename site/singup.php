@@ -16,6 +16,7 @@ echo '
 
             <h2>Регистрация</h2>
             <form action="/singup.php" method="post">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Введите имя"><br>
                 <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин"><br>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Введите Email"><br>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль"><br>
@@ -85,30 +86,33 @@ if(isset($data['do_signup'])) {
     }
 
     // Проверка на уникальность логина
-    $login = 'login';
-    $uniqueCheckQ = $pdo->query('SELECT * FROM `user` WHERE `login` ='.$login.'');
+    $login = $data['login'];
+    $uniqueCheckQ = $pdo->query('SELECT * FROM `user` WHERE `login` ="'.$login.'"');
     $checkResult = $uniqueCheckQ->fetch(PDO::FETCH_OBJ);
-    if ($checkResult[0] > 0){
+    if ($checkResult != 0){
 
         $errors[] = "Пользователь с таким логином существует!";
     }
 
     // Проверка на уникальность email
 
-    $email = 'email';
-    $uniqueCheck = $pdo->query('SELECT * FROM `user` WHERE `email` ='.$email.'');
+    $email = $data['email'];
+    $uniqueCheck = $pdo->query('SELECT * FROM `user` WHERE `email` ="'.$email.'"');
     $checkResult = $uniqueCheck->fetch(PDO::FETCH_OBJ);
-    if ($checkResult[0] > 0){
+    if ($checkResult != 0){
 
         $errors[] = "Пользователь с таким Email существует!";
     }
 
-
+    echo empty($errors);
     if(empty($errors)) {
-
+        $password = $data['password'];
+        $name = $data['name'];
         // Все проверено, регистрируем
-        $sql = 'INSERT INTO `user` (login, email, password) VALUES('.$login.' , '.$email.' , '.$password.')';
+        $sql = 'INSERT INTO user(name, login, email, password) VALUES("'.$name.'" , "'.$login.'" , "'.$email.'" , "'.$password.'")';
 
+        $query = $pdo->prepare($sql);
+        $query->execute();
 
         // Хешируем пароль
         //$user->password = password_hash($data['password'], PASSWORD_DEFAULT);
