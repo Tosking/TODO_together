@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <header><a href ="/index.php"><img src ="logo/logo.png" width="200" height="70" alt ="logo"></a></header>
   <div class="container">
+
 
     <?php
       require 'configDB.php';
@@ -22,6 +22,7 @@
       <input type="text" name="list" id="list" placeholder="list" class="form-control" autocomplete="off">
       <button type="submit" name="createList" class="btn btn-success">Создать</button>
     </form>';
+
       $listrow = $pdo->query('SELECT * FROM `list`');
       echo '<div id="lists"><h1>Листы:</h1>';
       while($list = $listrow->fetch(PDO::FETCH_OBJ)){
@@ -30,6 +31,11 @@
       echo '</div>';
       echo '</ul>';
     ?>
+      <a href="/singup.php"> <button id="reg"> Регистрация </button></a>
+      <a href="/login.php"> <button id="login"> Вход </button></a>
   </div>
+
+
+
 </body>
 </html>
