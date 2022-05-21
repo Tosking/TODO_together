@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Todolist</title>
+  <link rel="icon" href="logo/logo.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <header><a href ="/index.php"><img src ="logo/logo.png" width="200" height="70" alt ="logo"></a></header>
+    <header><a href ="/index.php"><img src ="logo/logo.png" width="100" height="100" alt ="logo"></a></header>
   <div class="container">
     <?php
       session_start();
@@ -54,6 +55,12 @@
       }
       echo '</div>';
       echo '</ul>';
+      $user_name = $pdo->query('SELECT `login` FROM `user` WHERE `user_id`='.$user.'')->fetch(PDO::FETCH_OBJ)->login;
+      echo '
+      <a href="/singup.php"> <button id="reg"> Регистрация </button></a>
+      <a href="/login.php"> <button id="login"> Вход </button></a>
+      <div id="name">Вы вошли как: <strong>'.$user_name.'</strong></div>
+      ';
     ?>
   </div>
 </body>
