@@ -81,7 +81,14 @@ ul li {
 }
 
 .sub_content {
-  font-size: 12px
+  font-size: 12px;
+  width: fit-content;
+  border: 0;
+  broder-radius: 5px;
+}
+
+.sub_content:hover{
+  background: red;
 }
 
 #lists button:hover {

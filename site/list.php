@@ -34,7 +34,7 @@
         echo '<b>'.$row->content.'</b>';
 
         while($sub_content = $sub_cont->fetch(PDO::FETCH_OBJ)){
-            echo '<div class="sub_content">• '.$sub_content->content.'</div>';
+            echo '<div class="sub_content"><a href="delete_subcont.php?sub_id='.$sub_content->id.'&list='.$list.'">• '.$sub_content->content.'</a></div>';
         }
 
         echo'
