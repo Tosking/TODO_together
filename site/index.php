@@ -16,7 +16,7 @@
 
     <?php
       session_start();
-      if($_SESSION['id'] == null){
+      if($_SESSION['id'] == null || empty($_SESSION)){
         header("Location: /login.php");
       }
       require 'configDB.php';

@@ -30,7 +30,7 @@ CREATE TABLE `items` (
   PRIMARY KEY (`item`),
   KEY `list` (`list`),
   CONSTRAINT `items_ibfk_1` FOREIGN KEY (`list`) REFERENCES `list` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,9 +41,13 @@ LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` VALUES
 (6,28,'ВОйти на сайт',0),
-(5,29,'123',0),
-(5,30,'321',0),
-(25,32,'21',0);
+(NULL,32,'21',0),
+(5,33,'Купить',0),
+(1,34,'123',0),
+(29,35,'123',0),
+(27,36,'pop',0),
+(27,37,'321',0),
+(NULL,39,'321',0);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +62,7 @@ CREATE TABLE `list` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,23 +81,13 @@ INSERT INTO `list` VALUES
 ('name',7),
 ('name',8),
 ('naming',9),
-('123',10),
-('123',11),
-('123',12),
-('123',13),
-('123',14),
-('123',15),
-('123',16),
-('123',17),
-('123',18),
-('123',19),
-('123',20),
-('123',21),
 ('321',22),
-('321',23),
-('321',24),
-('321',25),
-('321',26);
+('321',26),
+('123',27),
+('lol',28),
+('lol',29),
+('321',32),
+('321',36);
 /*!40000 ALTER TABLE `list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,13 +115,6 @@ CREATE TABLE `list_to_user` (
 
 LOCK TABLES `list_to_user` WRITE;
 /*!40000 ALTER TABLE `list_to_user` DISABLE KEYS */;
-INSERT INTO `list_to_user` VALUES
-(1,21,3),
-(1,22,3),
-(1,23,3),
-(1,24,3),
-(1,25,3),
-(1,26,3);
 /*!40000 ALTER TABLE `list_to_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,8 +127,10 @@ DROP TABLE IF EXISTS `sub_content`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sub_content` (
   `item` int(255) NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,8 +140,17 @@ CREATE TABLE `sub_content` (
 LOCK TABLES `sub_content` WRITE;
 /*!40000 ALTER TABLE `sub_content` DISABLE KEYS */;
 INSERT INTO `sub_content` VALUES
-(29,'123'),
-(29,'321');
+(29,1,'123'),
+(29,2,'321'),
+(29,3,'ывф'),
+(29,4,'ads'),
+(33,5,'Молоко'),
+(33,6,'Яйца'),
+(33,7,'Хлеб'),
+(33,8,'Атомную элетростанцию '),
+(35,9,'das'),
+(36,10,'123'),
+(38,13,'321');
 /*!40000 ALTER TABLE `sub_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +169,7 @@ CREATE TABLE `user` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`user_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +180,13 @@ LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
 (1,'test','test','test','test'),
-(2,'test','test','test','test');
+(2,'test','test','test','test'),
+(3,NULL,'jateren400@doerma.com','tal','tal'),
+(4,'yak','jateren1400@doerma.com','yak','yak'),
+(5,'don','jateren2400@doerma.com','don','don'),
+(6,'gon','jatere1n400@doerma.com','gon','gon'),
+(7,'yan','jateren4020@doerma.com','yan','yan'),
+(8,'chel','jater1en400@doerma.com','chel','chel');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -195,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-18 12:48:41
+-- Dump completed on 2022-05-23 18:27:18
