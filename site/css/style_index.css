@@ -101,4 +101,12 @@ ul li button:hover {
   border-style: dashed;
   display: block;
 }
-
+#invites {
+  position: absolute;
+  top: 180px;
+  left:65%;
+  padding: 8px 8px;
+  border: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}

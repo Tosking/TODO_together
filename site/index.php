@@ -25,10 +25,16 @@
       echo '
     <h1>Создание листа</h1>
     <form action="/add_list.php?user='.$user.'" method="post" class="input">
-      <input type="text" name="list" id="list" placeholder="list" class="form-control" autocomplete="off">
+      <input type="text" name="list" id="list" placeholder="Название листа" class="form-control" autocomplete="off">
       <button type="submit" name="createList" class="btn btn-success">Создать</button>
     </form>';
-
+      echo '<div id="invites"><h2>Приглашения:</h2>';
+      $invites = $pdo->query('SELECT * FROM `list_to_user` WHERE `user` ='.$user.' AND `access` =0');
+      while($row = $invites->fetch(PDO::FETCH_OBJ)){
+        $listname = $pdo->query('SELECT `name` FROM `list` WHERE `id` ='.$row->list.'')->fetch(PDO::FETCH_OBJ)->name;
+        echo '<a href="accept.php?list='.$row->list.'&user='.$user.'"><button class="invite">'.$listname.'</button></a>';
+      }
+      echo '</div>';
       $userlists = $pdo->query('SELECT `list` FROM `list_to_user` WHERE `user` ='.$user.'');
       echo '<div id="lists"><h1>Листы:</h1>';
       while($listid = $userlists->fetch(PDO::FETCH_OBJ)){

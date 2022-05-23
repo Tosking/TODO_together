@@ -20,6 +20,7 @@
       require 'configDB.php';
       echo '<ul>';
       $list = $_GET['list'];
+      $access = $pdo->query('SELECT `access` FROM `list_to_user` WHERE `user` ='.$user.'')->fetch(PDO::FETCH_OBJ)->access;
       $query = $pdo->query('SELECT * FROM `items` WHERE `list` ='.$list.'');
       $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$list.'');
       $name = $listrow->fetch(PDO::FETCH_OBJ);
@@ -78,7 +79,10 @@
         </li>';
       }
       $listrow = $pdo->query('SELECT `list` FROM `list_to_user` WHERE `user` ='.$user.'');
-      echo '<h4> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h4></a>';
+
+      if($access == '3'){
+        echo '<h4> <a href = "delete_list.php?id='.$list.'"><button id = "delete">Удалить лист</button></h4></a>';
+      }
       echo '<div id="lists">';
       echo '<h1><b>Листы</b></h1>';
       while($listid = $listrow->fetch(PDO::FETCH_OBJ)) {
