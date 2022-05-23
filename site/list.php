@@ -28,7 +28,29 @@
     <form action="/add.php?list='.$list.'" method="post" class="input">
       <input type="text" name="task" id="task" placeholder="Нужно сделать.." class="form-control" autocomplete="off">
       <button type="submit" name="sendTask" class="btn btn-success">Создать</button>
-    </form>';
+    </form>
+      <div id="members"><h2>Участники:</h2>
+        ';
+      $memberrow = $pdo->query('SELECT * FROM `list_to_user` WHERE `list` = '.$list.'');
+      $num = 1;
+        while($member = $memberrow->fetch(PDO::FETCH_OBJ)){
+          $member_name = $pdo->query('SELECT * FROM `user` WHERE `user_id` ='.$member->user.'');
+          $member_name = $member_name->fetch(PDO::FETCH_OBJ)->name;
+          echo '<div class="member">'.$num.'. '.$member_name.'';
+          if($member->access == 3){
+            echo '<div class="access">  Создатель</div>';
+          }
+          if($member->access == 2){
+            echo '<div class="access">  Админ</div>';
+          }
+          if($member->access == 1){
+            echo '<div class="access">  Участник</div>';
+          }
+          echo '</div>';
+          $num++;
+        }
+        echo'
+      </div>';
       while($row = $query->fetch(PDO::FETCH_OBJ)) {
         $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$row->list.'');
         $list_id = $listrow->fetch(PDO::FETCH_OBJ);
