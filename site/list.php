@@ -46,11 +46,19 @@
           if($member->access == 1){
             echo '<div class="access">  Участник</div>';
           }
+
           echo '</div>';
+
           $num++;
         }
+
+        echo'<form action="/sendrequest.php?list='.$list.'" method="post">
+        <input type="text" name="login" size = "15" id="login" placeholder="Введите логин"> 
+        <button id = "addmembers"  name="sendTask" type ="submit">Отправить приглашение</button> </form>';
         echo'
       </div>';
+
+
       while($row = $query->fetch(PDO::FETCH_OBJ)) {
         $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$row->list.'');
         $list_id = $listrow->fetch(PDO::FETCH_OBJ);
