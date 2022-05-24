@@ -16,11 +16,11 @@ echo '
 
             <h2>Регистрация</h2>
             <form action="/singup.php" method="post">
-                <input type="text" class="form-control" name="name" id="name_" placeholder="Введите имя"><br>
-                <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин"><br>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Введите Email"><br>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль"><br>
-                <input type="password" class="form-control" name="password_2" id="password_2" placeholder="Повторите пароль"><br>
+                <input type="text" class="form-control" name="name" id="name_" placeholder="Введите имя" autocomplete="off"><br>
+                <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин" autocomplete="off"><br>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Введите Email" autocomplete="off"><br>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль" autocomplete="off"><br>
+                <input type="password" class="form-control" name="password_2" id="password_2" placeholder="Повторите пароль" autocomplete="off"><br>
                 <button class="btn btn-success" name="do_signup" type="submit">Зарегистрировать</button>
             </form>
             <br>

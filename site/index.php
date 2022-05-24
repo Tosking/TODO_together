@@ -28,21 +28,28 @@
       <input type="text" name="list" id="list" placeholder="Название листа" class="form-control" autocomplete="off">
       <button type="submit" name="createList" class="btn btn-success">Создать</button>
     </form>';
-      echo '<div id="invites"><h2>Приглашения:</h2>';
       $invites = $pdo->query('SELECT * FROM `list_to_user` WHERE `user` ='.$user.' AND `access` =0');
-      while($row = $invites->fetch(PDO::FETCH_OBJ)){
-        $listname = $pdo->query('SELECT `name` FROM `list` WHERE `id` ='.$row->list.'')->fetch(PDO::FETCH_OBJ)->name;
-        echo '<a href="accept.php?list='.$row->list.'&user='.$user.'"><button class="invite">'.$listname.'</button></a>';
+      if($invites->rowCount() != 0){
+         echo '<div id="invites"><h2>Приглашения:</h2>';
+         while($row = $invites->fetch(PDO::FETCH_OBJ)){
+           $listname = $pdo->query('SELECT `name` FROM `list` WHERE `id` ='.$row->list.'')->fetch(PDO::FETCH_OBJ)->name;
+           echo '<a href="accept.php?list='.$row->list.'&user='.$user.'"><button class="invite">'.$listname.'</button></a>';
+         }
+         echo '</div>';
       }
-      echo '</div>';
-      $userlists = $pdo->query('SELECT `list` FROM `list_to_user` WHERE `user` ='.$user.'');
-      echo '<div id="lists"><h1>Листы:</h1>';
-      while($listid = $userlists->fetch(PDO::FETCH_OBJ)){
-        $list = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$listid->list.'');
-        $list = $list->fetch(PDO::FETCH_OBJ);
-        echo ' <a href="/list.php?list='.$list->id.'"><button>'.$list->name.'</button></a>';
+            $userlists = $pdo->query('SELECT *  FROM `list_to_user` WHERE `user` ='.$user.' AND `access` <> 0');
+      if($userlists->rowCount() != 0){
+        echo '<div id="lists"><h1>Листы:</h1>';
+        while($listid = $userlists->fetch(PDO::FETCH_OBJ)){
+          $accesslist = $pdo->query('SELECT `access` FROM `list_to_user` WHERE `user` ='.$user.' AND `list` ='.$listid->list.'')->fetch(PDO::FETCH_OBJ)->access;
+          if($accesslist != 0){
+            $list = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$listid->list.'');
+            $list = $list->fetch(PDO::FETCH_OBJ);
+            echo ' <a href="/list.php?list='.$list->id.'"><button>'.$list->name.'</button></a>';
+          }
+        }
+        echo '</div>';
       }
-      echo '</div>';
       echo '</ul>';
       $user_name = $pdo->query('SELECT `login` FROM `user` WHERE `user_id`='.$user.'')->fetch(PDO::FETCH_OBJ)->login;
       echo '

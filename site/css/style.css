@@ -1,8 +1,9 @@
 body {background-color: #EFF0F3!important}
+a { text-decoration: none; }
 
 .container {
   margin-top: 50px;
-  width: 25%!important;
+  width: 500px!important;
 }
 
 .list {
@@ -58,6 +59,7 @@ ul li {
   position: absolute;
   top: 120px;
   left: 10px;
+  width: 10%;
   z-index: 1;
   border: 1px;
   border-style: solid;
@@ -84,11 +86,20 @@ ul li {
   font-size: 12px;
   width: fit-content;
   border: 0;
+  color: black;
   broder-radius: 5px;
 }
 
+
 .sub_content:hover{
-  background: red;
+  color: red;
+}
+
+.adelete {
+  color:black;
+}
+.adelete:hover{
+  color:red;
 }
 
 #lists button:hover {
@@ -149,26 +160,37 @@ ul li button:hover {
   border-style: dashed;
   display: block;
 }
-#members{
+#memlist{
   position: absolute;
   top: 180px;
-  left:65%;
-  padding: 8px 8px;
-  border: 1px;
-  border-style: solid;
-  border-radius: 5px;
-}
+  left: max(800px ,65%);
+  }
 .member{
   width: fit-content;
 }
 .access{
   font-size: 15px;
   display: inline;
+  color: #aa0000;
 }
 #addmembers
 {
   position:absolute;
-  margin-top:12px;
   font-size:15px;
+  margin-left: 5px;
+  margin-bottom: 15px;
   background:#33aa33;
+}
+#members {
+  padding: 8px 8px;
+  border: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+#invite {
+  display: block;
+  margin-top: 5px;
+}
+#login {
+  margin-top: 5px;
 }

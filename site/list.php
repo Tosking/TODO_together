@@ -14,25 +14,25 @@
   <div class="container">
     <?php
       session_start();
+      $user = $_SESSION['id'];
       if($_SESSION['id'] == null || empty($_SESSION)){
         header("Location: /login.php");
       }
       require 'configDB.php';
       echo '<ul>';
       $list = $_GET['list'];
-      $access = $pdo->query('SELECT `access` FROM `list_to_user` WHERE `user` ='.$user.'')->fetch(PDO::FETCH_OBJ)->access;
+      $access = $pdo->query('SELECT `access` FROM `list_to_user` WHERE `user` ='.$user.' AND `list` ='.$list.'')->fetch(PDO::FETCH_OBJ)->access;
       $query = $pdo->query('SELECT * FROM `items` WHERE `list` ='.$list.'');
       $listrow = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$list.'');
       $name = $listrow->fetch(PDO::FETCH_OBJ);
-      $user = $_SESSION['id'];
       echo '<h1>'.$name->name.'</h1>
     <form action="/add.php?list='.$list.'" method="post" class="input">
       <input type="text" name="task" id="task" placeholder="Нужно сделать.." class="form-control" autocomplete="off">
       <button type="submit" name="sendTask" class="btn btn-success">Создать</button>
     </form>
-      <div id="members"><h2>Участники:</h2>
+      <div id="memlist"><div id="members"><h2>Участники:</h2>
         ';
-      $memberrow = $pdo->query('SELECT * FROM `list_to_user` WHERE `list` = '.$list.'');
+      $memberrow = $pdo->query('SELECT * FROM `list_to_user` WHERE `list` = '.$list.' AND `access` <> 0');
       $num = 1;
         while($member = $memberrow->fetch(PDO::FETCH_OBJ)){
           $member_name = $pdo->query('SELECT * FROM `user` WHERE `user_id` ='.$member->user.'');
@@ -42,7 +42,9 @@
             echo '<div class="access">  Создатель</div>';
           }
           if($member->access == 2){
-            echo '<div class="access">  Админ</div>';
+            echo '<div class="access">  Админ';
+            if ($access)
+            echo '</div>';
           }
           if($member->access == 1){
             echo '<div class="access">  Участник</div>';
@@ -52,10 +54,12 @@
 
           $num++;
         }
-
-        echo'<form action="/sendrequest.php?list='.$list.'" method="post">
-        <input type="text" name="login" size = "15" id="login" placeholder="Введите логин"> 
-        <button id = "addmembers"  name="sendTask" type ="submit">Отправить приглашение</button> </form>';
+        echo '</div>';
+        if($access >= 2){
+          echo'<div id="invite"><form action="/sendrequest.php?list='.$list.'" method="post">
+          <input type="text" name="login" size = "15" id="login" placeholder="Введите логин" autocomplete="off">
+          <button id = "addmembers"  name="sendTask" type ="submit" class="btn btn-success">Пригласить</button> </form></div>';
+        }
         echo'
       </div>';
 
@@ -68,7 +72,7 @@
         echo '<b>'.$row->content.'</b>';
 
         while($sub_content = $sub_cont->fetch(PDO::FETCH_OBJ)){
-            echo '<div class="sub_content"><a href="delete_subcont.php?sub_id='.$sub_content->id.'&list='.$list.'">• '.$sub_content->content.'</a></div>';
+            echo '<div class="sub_content"><a class="adelete" href="delete_subcont.php?sub_id='.$sub_content->id.'&list='.$list.'">• '.$sub_content->content.'</a></div>';
         }
 
         echo'
@@ -86,9 +90,12 @@
       echo '<div id="lists">';
       echo '<h1><b>Листы</b></h1>';
       while($listid = $listrow->fetch(PDO::FETCH_OBJ)) {
-          $list = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$listid->list.'');
-          $list = $list->fetch(PDO::FETCH_OBJ);
-          echo '<a href="/list.php?list='.$list->id.'"><button id ="listes">'.$list->name.'</button></a>';
+          $accesslist = $pdo->query('SELECT `access` FROM `list_to_user` WHERE `user` ='.$user.' AND `list` ='.$listid->list.'')->fetch(PDO::FETCH_OBJ)->access;
+          if($accesslist != 0){
+            $blist = $pdo->query('SELECT * FROM `list` WHERE `id` ='.$listid->list.'');
+            $blist = $blist->fetch(PDO::FETCH_OBJ);
+            echo '<a href="/list.php?list='.$blist->id.'"><button id ="listes">'.$blist->name.'</button></a>';
+          }
       }
       echo '</div>';
       echo '</ul>';
